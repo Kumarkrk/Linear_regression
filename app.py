@@ -4,7 +4,7 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
+import streamlit as st
 import numpy as np
 import pickle
 class Linear_Regression():
@@ -37,5 +37,20 @@ class Linear_Regression():
 
         return x.dot(self.w) + self.b
 
-model=pickle.load(open("linear.sav",'rb'))
-print(model.predict(np.array([[1.5]])))
+
+
+model = pickle.load(open("linear.sav", "rb"))
+
+st.title("Salary Prediction App")
+
+experience = st.number_input(
+    "Enter Years of Experience",
+    min_value=0.0,
+    step=0.1
+)
+
+if st.button("Predict Salary"):
+
+    prediction = model.predict(np.array([[experience]]))
+
+    st.success(f"Predicted Salary: ₹ {prediction[0]:.2f}")
