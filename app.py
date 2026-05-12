@@ -37,5 +37,5 @@ class Linear_Regression():
 
         return x.dot(self.w) + self.b
 
-model=pickle.load(open(r"C:\Users\kumar\linear.sav",'rb'))
+model=pickle.load(open("linear.sav",'rb'))
 print(model.predict(np.array([[1.5]])))
